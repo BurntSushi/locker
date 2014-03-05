@@ -12,6 +12,10 @@ mutex, simply ignore the RLock/RUnlock functions.
 */
 package locker
 
+// BUG(burntsushi): The locker here can grow without bound in long running
+// programs. Since it's intended to be used in web applications, this is a
+// major problem. Figure out a way to keep the locker lean.
+
 import (
 	"fmt"
 	"sync"
